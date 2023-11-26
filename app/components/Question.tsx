@@ -8,8 +8,13 @@ const Question = () => {
   const [chosenLetter, setChosenLetter] = useState<string[]>([]);
 
   return (
-    <div className="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[17rem] h-52 flex flex-col justify-between items-center gap-14">
-      <div className="bg-green-300">
+    <div 
+    className="relative top-1/2 left-1/2 
+    -translate-x-1/2 -translate-y-1/2 w-[16rem] 
+    h-52 flex flex-col justify-between items-center 
+    gap-14"
+    >
+      <div className="">
         {letters.map((letter, index) => (
           <span
             key={index}
@@ -17,9 +22,8 @@ const Question = () => {
               position: "absolute",
               left: hashmap.get(index) === letter ? chosenLetter.indexOf(letter) * 50 : index * 50,
               top: hashmap.get(index) === letter ? index + 100 : 50,
-              transition: "all 0.5s ease",
             }}
-            className="text-4xl"
+            className="text-4xl hover:text-yellow-500 cursor-pointer transition-all duration-300"
             onClick={() => {
               let newHashMap = new Map(hashmap);
               newHashMap.set(index, letter);

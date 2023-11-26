@@ -1,5 +1,48 @@
-const Answer = () => {
-  return <div>Answer</div>;
+"use client";
+
+import { ApiResponse } from "../page";
+
+interface Props {
+  items: ApiResponse;
+}
+
+const Answer = ({ items }: Props) => {
+  const hiddenWords = items.items
+    .slice(0, 1)
+    .map((item) => item.Words.split(' '))
+    .flat();
+
+  console.log(hiddenWords);
+
+  const groupedWords: { [key: string]: string[] } = hiddenWords.reduce(
+    (acc, word) => {
+      const length = word.length.toString();
+
+      if (!acc[length]) {
+        acc[length] = [];
+      }
+
+      acc[length].push(word);
+      return acc;
+    },
+    {} as { [key: string]: string[] }
+  );
+
+  const ans = ['MEOW', 'FUCK', "SHIT", "MOLE"];
+
+  return (
+    <div className="bg-blue-300 flex flex-col">
+      {Object.keys(groupedWords).map((length, index) => (
+        <div key={index} className="flex flex-wrap justify-between gap-2">
+          {groupedWords[length].map((word, wordIndex) => (
+            <div key={wordIndex} className="">
+              {word.includes(ans.filter((w) => w === word)[0]) ? word : word.replace(/./g, "_ ")}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default Answer;

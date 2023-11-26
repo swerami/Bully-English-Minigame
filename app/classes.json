@@ -1,0 +1,34 @@
+{
+    "items": [
+      {
+        "Class": "English 1",
+        "Letters Given": "E L L M O W",
+        "Words": "ELM LOW MEW MOW OWE OWL WOE MEOW MEWL MOLE MOLL WELL MELLOW",
+        "Reward": "Apologize to bullies more effectively"
+      },
+      {
+        "Class": "English 2",
+        "Letters Given": "F G H I S T",
+        "Words": "FIG FIT HIS HIT IFS ITS SIT FIGS FISH FIST FITS GIFT GIST HITS SIFT SIGH THIS FIGHT GIFTS SHIFT SIGHT FIGHTS",
+        "Reward": "Better taunts when shoving"
+      },
+      {
+        "Class": "English 3",
+        "Letters Given": "E I L M S S",
+        "Words": "ELM LEI LIE MIL ELMS ISLE LIME LESS LEIS LIES MESS MILE MISE MISS SEMI SLIM ISLES LIMES MILES SEISM SLIME SLIMS SMILE SLIMES SMILES",
+        "Reward": "Apologize to Prefects and Faculty for minor offenses"
+      },
+      {
+        "Class": "English 4",
+        "Letters Given": "A C N O R Y",
+        "Words": "ANY ARC CAN CAR CAY CON COY CRY NAY NOR OAR RAN RAY RYA YON CONY CORN CRAN CYAN NARC﻿ NARY ORCA RACY ROAN YARN ACORN CARNY CORNY CRONY RAYON CRAYON",
+        "Reward": "Better taunts"
+      },
+      {
+        "Class": "English 5",
+        "Letters Given": "A D E G G R",
+        "Words": "AGE ARE DAG EAR EGG ERA ERG GAD GAG GAR RAD RAG RED AGED DARE DEAR DRAG DREG EGAD GAGE GEAR GRAD RAGE READ AGGER GAGER GRADE RAGED DAGGER RAGGED",
+        "Reward": "Apologize to Police for minor offenses"
+      }
+    ]
+  }
