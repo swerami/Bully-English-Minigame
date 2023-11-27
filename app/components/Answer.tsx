@@ -1,5 +1,6 @@
 "use client";
 
+import ValidateAnswerStore from "../hooks/ValidateAnswer";
 import { ApiResponse } from "../page";
 
 interface Props {
@@ -11,8 +12,6 @@ const Answer = ({ items }: Props) => {
     .slice(0, 1)
     .map((item) => item.Words.split(' '))
     .flat();
-
-  console.log(hiddenWords);
 
   const groupedWords: { [key: string]: string[] } = hiddenWords.reduce(
     (acc, word) => {
@@ -28,7 +27,8 @@ const Answer = ({ items }: Props) => {
     {} as { [key: string]: string[] }
   );
 
-  const ans = ['MEOW', 'FUCK', "SHIT", "MOLE"];
+  const submittedAnswers = ValidateAnswerStore((e) => e.submittedAnswers)
+
 
   return (
     <div className="bg-blue-300 flex flex-col">
@@ -36,7 +36,7 @@ const Answer = ({ items }: Props) => {
         <div key={index} className="flex flex-wrap justify-between gap-2">
           {groupedWords[length].map((word, wordIndex) => (
             <div key={wordIndex} className="">
-              {word.includes(ans.filter((w) => w === word)[0]) ? word : word.replace(/./g, "_ ")}
+              {word.includes(submittedAnswers.filter((w) => w === word.toLocaleUpperCase())[0]) ? word : word.replace(/./g, "_ ")}
             </div>
           ))}
         </div>
