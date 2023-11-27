@@ -9,22 +9,25 @@ interface Props {
 }
 
 const Question = ({items}: Props) => {
+
+  // handle duplicated puzzle letters
   const letters = items.items[0]['Letters Given'].split(' ').map((letter, index, array) => {
     if (array.indexOf(letter) !== index) {
       return letter.toLowerCase();
     }
     return letter;
   });
+
   const [hashmap, setHashmap] = useState(new Map());
-  const [chosenLetter, setChosenLetter] = useState<string[]>([]);
+  const chosenLetters = Array.from(hashmap.values());
 
   const {setSubmittedAnswers, submittedAnswers} = ValidateAnswerStore()
 
   let formattedWords = items.items[0].Words.split(' ').map(word => word)
 
   useEffect(() => {
-    console.log(chosenLetter)
-  }, [chosenLetter])
+    console.log(chosenLetters)
+  }, [hashmap])
 
   function handleSubmit(chosenLetter: string[]) {
     let submitted = chosenLetter.join('');
@@ -32,12 +35,10 @@ const Question = ({items}: Props) => {
     if(formattedWords.includes(submitted)){
       console.log('correct');
       setSubmittedAnswers(submitted)
-      setChosenLetter([]);
       setHashmap(new Map());
       console.log('stored', submittedAnswers)
     } else {
       console.log('wrong');
-      setChosenLetter([]);
       setHashmap(new Map());
     }
   }
@@ -55,14 +56,13 @@ const Question = ({items}: Props) => {
             key={index}
             style={{
               position: "absolute",
-              left: hashmap.get(index) === letter ? chosenLetter.indexOf(letter) * 50 : index * 50,
+              left: hashmap.get(index) === letter ? chosenLetters.indexOf(letter) * 50 : index * 50,
               top: hashmap.get(index) === letter ? index + 100 : 50,
             }}
             className="text-4xl uppercase hover:text-yellow-500 cursor-pointer transition-all duration-300"
             onClick={() => {
               let newHashMap = new Map(hashmap);
-              newHashMap.set(index, letter);
-              setChosenLetter([...chosenLetter, letter]);              
+              newHashMap.set(index, letter);           
               setHashmap(newHashMap);              
               
             }}
@@ -75,7 +75,7 @@ const Question = ({items}: Props) => {
         className="rounded-lg bg-black focus:scale-95 
         transition-transform duration-300 text-white py-2 px-4 text-3xl"
         onClick={() => {
-          handleSubmit(chosenLetter);
+          handleSubmit(chosenLetters);
         }}
       >
         Enter
