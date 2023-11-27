@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react";
 
 const Timer = () => {
-  const [time, setTime] = useState(180);
+  const [time, setTime] = useState(2);
 
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
@@ -15,7 +15,7 @@ const Timer = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setTime((prev) => prev - 1);
+      setTime((prev) => prev > 0 ? prev - 1 : prev);
     }, 1000);
     return () => {
       clearInterval(interval);
