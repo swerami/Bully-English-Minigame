@@ -22,9 +22,9 @@ export default async function Home() {
 
   return (
     <main 
-      className="flex flex-col gap-6 min-h-screen">
+      className="flex flex-col px-4 py-28 gap-6 min-h-screen">
         <Timer />
-      <div className="grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 bg-pink-100">
+      <div className="grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2">
         <Answer items={data} />
         <Question items={data} />
       </div>

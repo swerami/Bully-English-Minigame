@@ -31,7 +31,7 @@ const Answer = ({ items }: Props) => {
 
 
   return (
-    <div className="bg-blue-300 flex flex-col">
+    <div className="flex flex-col">
       {Object.keys(groupedWords).map((length, index) => (
         <div key={index} className="flex flex-wrap justify-between gap-2">
           {groupedWords[length].map((word, wordIndex) => (
