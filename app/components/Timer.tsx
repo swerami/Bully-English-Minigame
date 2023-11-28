@@ -3,8 +3,16 @@
 
 import { useEffect, useState } from "react";
 
+
+// priority queue
+
+// TODO: Question only shows when you start the timer
+// TODO: You can navigate between the 5 classes using select options 
+// TODO: Redesign and deploy
+
+
 const Timer = () => {
-  const [time, setTime] = useState(2);
+  const [time, setTime] = useState(3*60);
 
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
