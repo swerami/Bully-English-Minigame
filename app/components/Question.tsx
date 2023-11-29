@@ -21,7 +21,7 @@ const Question = ({items}: Props) => {
   const [hashmap, setHashmap] = useState(new Map());
   const chosenLetters = Array.from(hashmap.values());
 
-  const {setSubmittedAnswers, submittedAnswers} = ValidateAnswerStore()
+  const {setSubmittedAnswers, submittedAnswers, started} = ValidateAnswerStore()
 
   let formattedWords = items.items[0].Words.split(' ').map(word => word)
 
@@ -43,6 +43,9 @@ const Question = ({items}: Props) => {
     }
   }
 
+
+  const isBlurred = !started ? "blur-[6px] pointer-events-none" : "";
+
   return (
     <div 
     className="relative top-1/2 left-1/2 
@@ -59,7 +62,7 @@ const Question = ({items}: Props) => {
               left: hashmap.get(index) === letter ? chosenLetters.indexOf(letter) * 50 : index * 50,
               top: hashmap.get(index) === letter ? index + 100 : 50,
             }}
-            className="text-4xl uppercase hover:text-yellow-500 cursor-pointer transition-all duration-300"
+            className={`text-4xl uppercase hover:text-yellow-500 cursor-pointer transition-all duration-300 ${isBlurred}`}
             onClick={() => {
               let newHashMap = new Map(hashmap);
               newHashMap.set(index, letter);           
@@ -72,8 +75,8 @@ const Question = ({items}: Props) => {
         ))}
       </div>
       <button
-        className="rounded-lg bg-black focus:scale-95 
-        transition-transform duration-300 text-white py-2 px-4 text-3xl"
+        className={`rounded-lg bg-black focus:scale-95 
+        transition-all duration-300 text-white py-2 px-4 text-3xl ${isBlurred}`}
         onClick={() => {
           handleSubmit(chosenLetters);
         }}

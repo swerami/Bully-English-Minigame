@@ -27,13 +27,14 @@ const Answer = ({ items }: Props) => {
     {} as { [key: string]: string[] }
   );
 
-  const submittedAnswers = ValidateAnswerStore((e) => e.submittedAnswers)
+  const {submittedAnswers, started} = ValidateAnswerStore()
 
+  const isBlurred = !started ? "blur-[3px] pointer-events-none" : "";
 
   return (
     <div className="flex flex-col">
       {Object.keys(groupedWords).map((length, index) => (
-        <div key={index} className="flex flex-wrap justify-between gap-2">
+        <div key={index} className={`flex flex-wrap justify-between gap-2 transition-all duration-300 ${isBlurred}`}>
           {groupedWords[length].map((word, wordIndex) => (
             <div key={wordIndex} className="">
               {word.includes(submittedAnswers.filter((w) => w === word.toLocaleUpperCase())[0]) ? word : word.replace(/./g, "_ ")}
