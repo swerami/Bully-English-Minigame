@@ -5,7 +5,7 @@ interface ValidateAnswerStore {
     setSubmittedAnswers: (answer: string) => void
 
     started: boolean
-    setStarted: () => void
+    setStarted: (value: boolean) => void
 }
 
 const ValidateAnswerStore = create<ValidateAnswerStore>((set) => ({
@@ -16,9 +16,9 @@ const ValidateAnswerStore = create<ValidateAnswerStore>((set) => ({
         }))
     },
     started: false,
-    setStarted: () => {
+    setStarted: (value: boolean) => {
         set(() => ({
-            started: true
+            started: value
         }))
     }
 }))

@@ -15,7 +15,8 @@ import { HiPlay } from "react-icons/hi2";
 
 
 const Timer = () => {
-  const [time, setTime] = useState(3*60);
+  let duration = 3 * 60
+  const [time, setTime] = useState<number>(duration);
 
   const {started, setStarted} = ValidateAnswerStore();
 
@@ -27,22 +28,31 @@ const Timer = () => {
   };
 
   useEffect(() => {
+    if(time == 0) {
+      console.log("Time is up");
+      setStarted(false);
+      setTime(duration);
+    }
     if(started) {
       const interval = setInterval(() => {
         setTime((prev) => prev > 0 ? prev - 1 : prev);
+        
       }, 1000);
+
+      // cleanup
       return () => {
         clearInterval(interval);
+        // setStarted(false);
       };
     }
-  }, [started]);
+  }, [started, time]);
 
   return (
   <div className="flex flex-row mx-auto gap-4">
     <div className="text-3xl">{formatTime(time)}</div>
     <button 
     className=""
-    onClick={() => setStarted()}>
+    onClick={() => setStarted(true)}>
       <HiPlay size={20} />
     </button>
   </div>
