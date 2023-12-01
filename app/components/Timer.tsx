@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import ValidateAnswerStore from "../hooks/ValidateAnswer";
 import { HiPlay } from "react-icons/hi2";
+import SelectQuestion from "./SelectQuestion";
 
 
 // priority queue
@@ -12,6 +13,7 @@ import { HiPlay } from "react-icons/hi2";
 // TODO: You can navigate between the 5 classes using select options 
 // TODO: Redesign and deploy
 // TODO: Handle smartasses who will remove the blur style using the dev tools
+// TODO: ADD Scramble letters function
 
 
 const Timer = () => {
@@ -28,6 +30,9 @@ const Timer = () => {
   };
 
   useEffect(() => {
+    if(!started) {
+      setTime(duration)
+    }
     if(time == 0) {
       console.log("Time is up");
       setStarted(false);
@@ -55,6 +60,7 @@ const Timer = () => {
     onClick={() => setStarted(true)}>
       <HiPlay size={20} />
     </button>
+    <SelectQuestion />
   </div>
   );
 };

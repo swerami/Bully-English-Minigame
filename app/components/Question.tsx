@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { ApiResponse } from '../page';
 import ValidateAnswerStore from '../hooks/ValidateAnswer';
 
@@ -9,9 +9,10 @@ interface Props {
 }
 
 const Question = ({items}: Props) => {
+  const {setSubmittedAnswers, submittedAnswers, started, currentQuesiton} = ValidateAnswerStore()
 
   // handle duplicated puzzle letters
-  const letters = items.items[0]['Letters Given'].split(' ').map((letter, index, array) => {
+  const letters = items.items[currentQuesiton]['Letters Given'].split(' ').map((letter, index, array) => {
     if (array.indexOf(letter) !== index) {
       return letter.toLowerCase();
     }
@@ -21,24 +22,15 @@ const Question = ({items}: Props) => {
   const [hashmap, setHashmap] = useState(new Map());
   const chosenLetters = Array.from(hashmap.values());
 
-  const {setSubmittedAnswers, submittedAnswers, started} = ValidateAnswerStore()
-
-  let formattedWords = items.items[0].Words.split(' ').map(word => word)
-
-  useEffect(() => {
-    console.log(chosenLetters)
-  }, [hashmap])
+  let formattedWords = items.items[currentQuesiton].Words.split(' ').map(word => word)
 
   function handleSubmit(chosenLetter: string[]) {
     let submitted = chosenLetter.join('');
     submitted = submitted.toUpperCase();
     if(formattedWords.includes(submitted)){
-      console.log('correct');
       setSubmittedAnswers(submitted)
       setHashmap(new Map());
-      console.log('stored', submittedAnswers)
     } else {
-      console.log('wrong');
       setHashmap(new Map());
     }
   }

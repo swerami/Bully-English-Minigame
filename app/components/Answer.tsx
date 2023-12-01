@@ -8,8 +8,9 @@ interface Props {
 }
 
 const Answer = ({ items }: Props) => {
+  const currentQuestion = ValidateAnswerStore(e => e.currentQuesiton)
   const hiddenWords = items.items
-    .slice(0, 1)
+    .slice(currentQuestion, currentQuestion+1)
     .map((item) => item.Words.split(' '))
     .flat();
 
@@ -34,9 +35,9 @@ const Answer = ({ items }: Props) => {
   return (
     <div className="flex flex-col">
       {Object.keys(groupedWords).map((length, index) => (
-        <div key={index} className={`flex flex-wrap justify-between gap-2 transition-all duration-300 ${isBlurred}`}>
+        <div key={index} className={`flex flex-wrap justify gap-x-16 transition-all duration-300 ${isBlurred}`}>
           {groupedWords[length].map((word, wordIndex) => (
-            <div key={wordIndex} className="">
+            <div key={wordIndex} className="my-1">
               {word.includes(submittedAnswers.filter((w) => w === word.toLocaleUpperCase())[0]) ? word : word.replace(/./g, "_ ")}
             </div>
           ))}

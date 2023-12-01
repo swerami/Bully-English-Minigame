@@ -1,7 +1,10 @@
 import { create } from "zustand";
 
 interface ValidateAnswerStore {
-    submittedAnswers: string[],
+    currentQuesiton: number,
+    setCurrentQuesiton: (value: number) => void
+
+    submittedAnswers: string[]
     setSubmittedAnswers: (answer: string) => void
 
     started: boolean
@@ -9,12 +12,20 @@ interface ValidateAnswerStore {
 }
 
 const ValidateAnswerStore = create<ValidateAnswerStore>((set) => ({
+    currentQuesiton: 0,
+    setCurrentQuesiton(value: number) {
+        set(() => ({
+            currentQuesiton: value
+        }))
+    },
+
     submittedAnswers: [],
     setSubmittedAnswers: (answer) => {
         set((state) => ({
             submittedAnswers: [...state.submittedAnswers, answer]
         }))
     },
+
     started: false,
     setStarted: (value: boolean) => {
         set(() => ({
