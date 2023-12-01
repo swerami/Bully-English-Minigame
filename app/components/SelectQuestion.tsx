@@ -18,6 +18,14 @@ const SelectQuestion = () => {
     return <select 
         onChange={handleOnChange}
         defaultValue={0}
+        className="
+        bg-transparent
+        border
+        border-black/5
+        rounded-lg
+        py-2
+        px-4
+        "
         >
         <option value={0}>English 1</option>
         <option value={1}>English 2</option>
