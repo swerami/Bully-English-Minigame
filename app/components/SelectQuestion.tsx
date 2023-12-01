@@ -4,14 +4,15 @@ import ValidateAnswerStore from "../hooks/ValidateAnswer";
 const SelectQuestion = () => {
     const {
         setCurrentQuesiton,  
-        setStarted
+        setStarted,
+        resetSubmittedAnswers
     } = ValidateAnswerStore()    
 
     const handleOnChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setStarted(false)
 
         let value  = event.target.value
-
+        resetSubmittedAnswers()
         setCurrentQuesiton(Number(value))
     }
 

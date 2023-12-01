@@ -6,6 +6,7 @@ interface ValidateAnswerStore {
 
     submittedAnswers: string[]
     setSubmittedAnswers: (answer: string) => void
+    resetSubmittedAnswers: () => void
 
     started: boolean
     setStarted: (value: boolean) => void
@@ -20,9 +21,14 @@ const ValidateAnswerStore = create<ValidateAnswerStore>((set) => ({
     },
 
     submittedAnswers: [],
-    setSubmittedAnswers: (answer) => {
+    setSubmittedAnswers: (answer: string) => {
         set((state) => ({
             submittedAnswers: [...state.submittedAnswers, answer]
+        }))
+    },
+    resetSubmittedAnswers: () => {
+        set(() => ({
+            submittedAnswers: []
         }))
     },
 
