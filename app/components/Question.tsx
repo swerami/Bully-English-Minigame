@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ApiResponse } from '../page';
 import ValidateAnswerStore from '../hooks/ValidateAnswer';
 
@@ -20,7 +20,12 @@ const Question = ({ items }: Props) => {
     }
     return letter;
   });
-  let [test, setTest ] = useState(letters)
+  let [givenLetters, setGivenLetters ] = useState(letters)
+
+  // update letter
+  useEffect(() => {
+    setGivenLetters(letters)
+  }, [currentQuesiton])
 
   const [hashmap, setHashmap] = useState(new Map());
   const chosenLetters = Array.from(hashmap.values());
@@ -49,7 +54,7 @@ const Question = ({ items }: Props) => {
     gap-14"
     >
       <div className="">
-        {test.map((letter, index) => (
+        {givenLetters.map((letter, index) => (
           <span
             key={index}
             style={{
@@ -79,7 +84,7 @@ const Question = ({ items }: Props) => {
             const j = Math.floor(Math.random() * (i + 1));
             [scrambledLetters[i], scrambledLetters[j]] = [scrambledLetters[j], scrambledLetters[i]];
           }
-          setTest(scrambledLetters);
+          setGivenLetters(scrambledLetters);
         }}
       >
         <MdShuffle />
