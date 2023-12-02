@@ -42,7 +42,6 @@ const Timer = () => {
       // cleanup
       return () => {
         clearInterval(interval);
-        // setStarted(false);
       };
     }
   }, [started, time]);

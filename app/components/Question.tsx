@@ -7,6 +7,7 @@ import ValidateAnswerStore from '../hooks/ValidateAnswer';
 import { MdShuffle } from "react-icons/md";
 import toast from 'react-hot-toast';
 import { useRandomFailureMessage, useRandomSuccessMessage, useRoastTFOUTTAUser } from '../hooks/useNoti';
+import { inter } from '../layout';
 
 interface Props {
   items: ApiResponse;
@@ -45,7 +46,8 @@ const Question = ({ items }: Props) => {
 
     if(submittedAnswers.includes(submitted)) {
       toast("You have already submitted this answer", {
-        icon: "🧐"
+        icon: "🧐",
+        className: `font-sans`
       })
       setHashmap(new Map());
       return 
@@ -55,7 +57,8 @@ const Question = ({ items }: Props) => {
       setSubmittedAnswers(submitted)
       setHashmap(new Map());
       toast(useRandomSuccessMessage(), {
-        icon: "🥰"
+        icon: "🥰",
+        className: `font-sans`
       })
 
       // reset the count
@@ -68,11 +71,13 @@ const Question = ({ items }: Props) => {
       // Handle if user is braindead
       if(failureCount < 2){
         toast(useRandomFailureMessage(), {
-          icon: "😅"
+          icon: "😅",
+          className: `font-sans`
         })
       } else {
         toast(useRoastTFOUTTAUser(submitted), {
-          icon: "💀"
+          icon: "💀",
+          className: `font-sans`
         })
       }
 

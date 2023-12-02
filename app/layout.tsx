@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+export const inter = Inter({ subsets: ['latin'] })
 const InkFont = localFont({
   src: '../public/fonts/Inkfree.ttf'
 })
