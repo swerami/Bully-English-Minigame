@@ -5,12 +5,13 @@ import { useEffect, useState } from "react";
 import ValidateAnswerStore from "../hooks/ValidateAnswer";
 import { HiPlay } from "react-icons/hi2";
 import SelectQuestion from "./SelectQuestion";
+import toast from "react-hot-toast";
 
 const Timer = () => {
-  let duration = 3 * 60
+  let duration = 3 * 1
   const [time, setTime] = useState<number>(duration);
 
-  const {started, setStarted} = ValidateAnswerStore();
+  const {started, setStarted, setSubmittedAnswers, resetSubmittedAnswers} = ValidateAnswerStore();
 
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
@@ -26,6 +27,10 @@ const Timer = () => {
     if(time == 0) {
       console.log("Time is up");
       setStarted(false);
+      resetSubmittedAnswers()
+      toast("Time is up", {
+        icon: "⏰"
+      })
       setTime(duration);
     }
     if(started) {
