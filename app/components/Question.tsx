@@ -44,7 +44,9 @@ const Question = ({ items }: Props) => {
     if (formattedWords.includes(submitted)) {
       setSubmittedAnswers(submitted)
       setHashmap(new Map());
-      toast(useRandomSuccessMessage())
+      toast(useRandomSuccessMessage(), {
+        icon: "🥰"
+      })
 
       // reset the count
       setFailureCount(0)
@@ -55,9 +57,13 @@ const Question = ({ items }: Props) => {
       
       // Handle if user is braindead
       if(failureCount < 2){
-        toast(useRandomFailureMessage())
+        toast(useRandomFailureMessage(), {
+          icon: "😅"
+        })
       } else {
-        toast(useRoastTFOUTTAUser(submitted))
+        toast(useRoastTFOUTTAUser(submitted), {
+          icon: "💀"
+        })
       }
 
     }
