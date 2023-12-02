@@ -13,7 +13,7 @@ interface Props {
 }
 
 const Question = ({ items }: Props) => {
-  const { setSubmittedAnswers, started, currentQuesiton } = ValidateAnswerStore()
+  const { setSubmittedAnswers, submittedAnswers, started, currentQuesiton } = ValidateAnswerStore()
 
   // handle duplicated puzzle letters
   let letters = items.items[currentQuesiton]['Letters Given'].split(' ').map((letter, index, array) => {
@@ -40,7 +40,17 @@ const Question = ({ items }: Props) => {
     let submitted = chosenLetter.join('');
     if(submitted.length == 0) return;
 
+
     submitted = submitted.toUpperCase();
+
+    if(submittedAnswers.includes(submitted)) {
+      toast("You have already submitted this answer", {
+        icon: "🧐"
+      })
+      setHashmap(new Map());
+      return 
+    }
+
     if (formattedWords.includes(submitted)) {
       setSubmittedAnswers(submitted)
       setHashmap(new Map());
