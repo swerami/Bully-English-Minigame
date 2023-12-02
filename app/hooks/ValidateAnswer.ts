@@ -10,6 +10,9 @@ interface ValidateAnswerStore {
 
     started: boolean
     setStarted: (value: boolean) => void
+
+    progress: number
+    setProgress: (value: number) => void
 }
 
 const ValidateAnswerStore = create<ValidateAnswerStore>((set) => ({
@@ -37,7 +40,16 @@ const ValidateAnswerStore = create<ValidateAnswerStore>((set) => ({
         set(() => ({
             started: value
         }))
-    }
+    },
+
+    progress: 0,
+    setProgress: (value: number)=> {
+        set(() => ({
+            progress: value
+        }))
+    },
+
+
 }))
 
 export default ValidateAnswerStore;

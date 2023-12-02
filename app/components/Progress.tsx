@@ -10,7 +10,7 @@ interface Props {
 
 const Progress = ({data}: Props) => {
 
-  const {currentQuesiton, submittedAnswers} = ValidateAnswerStore()
+  const {currentQuesiton, submittedAnswers, setProgress} = ValidateAnswerStore()
 
   const answersCount = data.items[currentQuesiton].Words.split(" ").length
 
@@ -23,6 +23,7 @@ const Progress = ({data}: Props) => {
     const parsedPercentage = parseFloat(calcPct);
 
     setPercentage(parsedPercentage);
+    setProgress(parsedPercentage)
 
     switch (true) {
         case parsedPercentage > 0 && parsedPercentage < 50:

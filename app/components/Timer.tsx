@@ -11,7 +11,7 @@ const Timer = () => {
   let duration = 3 * 60
   const [time, setTime] = useState<number>(duration);
 
-  const {started, setStarted, setSubmittedAnswers, resetSubmittedAnswers} = ValidateAnswerStore();
+  const {started, setStarted, progress, resetSubmittedAnswers} = ValidateAnswerStore();
 
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
@@ -25,12 +25,22 @@ const Timer = () => {
       setTime(duration)
     }
     if(time == 0) {
-      console.log("Time is up");
       setStarted(false);
       resetSubmittedAnswers()
-      toast("Time is up", {
-        icon: "⏰"
-      })
+
+      if(progress > 55){
+        toast(`Congrats! You have passed the test! You answered ${progress}% outta total words`, {
+          icon: "✅",
+          className: `font-sans`
+        })
+      } else {
+        toast("Time is up. You have failed miserably.", {
+          icon: "⏰",
+          className: `font-sans`
+        })
+      }
+
+
       setTime(duration);
     }
     if(started) {
