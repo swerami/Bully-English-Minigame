@@ -6,16 +6,6 @@ import ValidateAnswerStore from "../hooks/ValidateAnswer";
 import { HiPlay } from "react-icons/hi2";
 import SelectQuestion from "./SelectQuestion";
 
-
-// priority queue
-
-// TODO: Question only shows when you start the timer
-// TODO: You can navigate between the 5 classes using select options 
-// TODO: Redesign and deploy
-// TODO: Handle smartasses who will remove the blur style using the dev tools
-// TODO: ADD Scramble letters function
-
-
 const Timer = () => {
   let duration = 3 * 60
   const [time, setTime] = useState<number>(duration);

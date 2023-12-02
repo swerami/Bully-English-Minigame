@@ -5,6 +5,8 @@ import { ApiResponse } from '../page';
 import ValidateAnswerStore from '../hooks/ValidateAnswer';
 
 import { MdShuffle } from "react-icons/md";
+import toast from 'react-hot-toast';
+import { useRandomFailureMessage, useRandomSuccessMessage, useRoastTFOUTTAUser } from '../hooks/useNoti';
 
 interface Props {
   items: ApiResponse;
@@ -32,14 +34,32 @@ const Question = ({ items }: Props) => {
 
   let formattedWords = items.items[currentQuesiton].Words.split(' ').map(word => word)
 
+  
+  const [failureCount, setFailureCount] = useState<number>(0);
   function handleSubmit(chosenLetter: string[]) {
     let submitted = chosenLetter.join('');
+    if(submitted.length == 0) return;
+
     submitted = submitted.toUpperCase();
     if (formattedWords.includes(submitted)) {
       setSubmittedAnswers(submitted)
       setHashmap(new Map());
+      toast(useRandomSuccessMessage())
+
+      // reset the count
+      setFailureCount(0)
     } else {
+      // Handle Failure
       setHashmap(new Map());
+      setFailureCount((prev) => prev + 1)
+      
+      // Handle if user is braindead
+      if(failureCount < 2){
+        toast(useRandomFailureMessage())
+      } else {
+        toast(useRoastTFOUTTAUser(submitted))
+      }
+
     }
   }
 
