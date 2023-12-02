@@ -33,7 +33,7 @@ const Answer = ({ items }: Props) => {
   const isBlurred = !started ? "blur-[3px] pointer-events-none" : "";
 
   return (
-    <div className="flex flex-col mx-auto">
+    <div className="flex flex-col m-auto">
       {Object.keys(groupedWords).map((length, index) => (
         <div key={index} className={`flex flex-wrap justify gap-x-16 transition-all duration-300 ${isBlurred}`}>
           {groupedWords[length].map((word, wordIndex) => (
