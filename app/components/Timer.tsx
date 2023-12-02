@@ -8,7 +8,7 @@ import SelectQuestion from "./SelectQuestion";
 import toast from "react-hot-toast";
 
 const Timer = () => {
-  let duration = 3 * 1
+  let duration = 3 * 60
   const [time, setTime] = useState<number>(duration);
 
   const {started, setStarted, setSubmittedAnswers, resetSubmittedAnswers} = ValidateAnswerStore();
@@ -49,7 +49,7 @@ const Timer = () => {
 
   return (
   <div className="flex flex-row mx-auto gap-4">
-    <div className="text-3xl">{formatTime(time)}</div>
+    <div className="text-3xl" style={{color: time <= 30 ? "red" : ""}}>{formatTime(time)}</div>
     <button 
     className=""
     onClick={() => setStarted(true)}>
