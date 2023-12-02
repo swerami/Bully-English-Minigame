@@ -17,7 +17,7 @@ const Progress = ({data}: Props) => {
   const [percentage, setPercentage] = useState<number>(0) 
   const [currentColor, setCurrentColor] = useState("black")
 
-  useEffect(() => {
+useEffect(() => {
     const calcPct = ((submittedAnswers.length / answersCount) * 100).toFixed(2);
 
     const parsedPercentage = parseFloat(calcPct);
@@ -35,6 +35,7 @@ const Progress = ({data}: Props) => {
         default:
             setCurrentColor("black");
     }
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [submittedAnswers, answersCount]);
 
   return <div

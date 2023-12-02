@@ -6,8 +6,7 @@ import ValidateAnswerStore from '../hooks/ValidateAnswer';
 
 import { MdShuffle } from "react-icons/md";
 import toast from 'react-hot-toast';
-import { useRandomFailureMessage, useRandomSuccessMessage, useRoastTFOUTTAUser } from '../hooks/useNoti';
-import { inter } from '../layout';
+import { randomFailureMessage, randomSuccessMessage, roastTFOUTTAUser } from '../utilities/messageUtils';
 
 interface Props {
   items: ApiResponse;
@@ -28,6 +27,7 @@ const Question = ({ items }: Props) => {
   // update letter
   useEffect(() => {
     setGivenLetters(letters)
+// eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentQuesiton])
 
   const [hashmap, setHashmap] = useState(new Map());
@@ -56,7 +56,7 @@ const Question = ({ items }: Props) => {
     if (formattedWords.includes(submitted)) {
       setSubmittedAnswers(submitted)
       setHashmap(new Map());
-      toast(useRandomSuccessMessage(), {
+      toast(randomSuccessMessage(), {
         icon: "🥰",
         className: `font-sans`
       })
@@ -70,12 +70,12 @@ const Question = ({ items }: Props) => {
       
       // Handle if user is braindead
       if(failureCount < 2){
-        toast(useRandomFailureMessage(), {
+        toast(randomFailureMessage(), {
           icon: "😅",
           className: `font-sans`
         })
       } else {
-        toast(useRoastTFOUTTAUser(submitted), {
+        toast(roastTFOUTTAUser(submitted), {
           icon: "💀",
           className: `font-sans`
         })
