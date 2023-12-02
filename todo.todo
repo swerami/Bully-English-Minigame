@@ -3,5 +3,6 @@ TODO: You can navigate between the 5 classes using select options ✅
 TODO: ADD Scramble letters function ✅
 TODO: Add toast when submitting answers ✅
 TODO: Add keyboard controls
-TODO: Add Progress Score tracking
+TODO: Add Progress Score tracking ✅
+TODO: Fix user submitting same answers. IT should not send notifications when he does
 TODO: Redesign and deploy *im a perfectionist so i probably never will*

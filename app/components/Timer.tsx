@@ -51,8 +51,8 @@ const Timer = () => {
   <div className="flex flex-row mx-auto gap-4">
     <div className="text-3xl" style={{color: time <= 30 ? "red" : ""}}>{formatTime(time)}</div>
     <button 
-    className=""
-    onClick={() => setStarted(true)}>
+     className=""
+     onClick={() => setStarted(true)}>
       <HiPlay size={20} />
     </button>
     <SelectQuestion />
