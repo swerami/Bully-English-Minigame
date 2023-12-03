@@ -43,6 +43,16 @@ const Timer = () => {
 
       setTime(duration);
     }
+    if(progress == 100 && started){
+      setStarted(false);
+      resetSubmittedAnswers()
+      setTime(duration)
+      toast(`Congrats! You have passed the test! You answered ${progress}% outta total words`, {
+        icon: "✅",
+        className: `font-sans`
+      })
+      return 
+    }
     if(started) {
       const interval = setInterval(() => {
         setTime((prev) => prev > 0 ? prev - 1 : prev);
