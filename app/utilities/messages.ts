@@ -114,7 +114,7 @@ export const FailureMessages = [
 
 export const DumbassSpecial = [
     "bro wtf is a REPLACE", "REPLACE? are you serious? ", "man WHAT THE HELL IS REPLACE",
-    "REPLACE? wow ur naturally dumb!", "REPLACE? you know this is an ENGLISH words puzzle right?",
+    "REPLACE? wow ur naturally dumb!", "REPLACE? you know this is an ENGLISH words test minigame right?",
     "REPLACE... Bro get tf outta here", "REPLACE??? HAHAHAHA", "REPLACE? You should be ashamed of urself",
-    "How can you be this stupid?"
+    "REPLACE? How can you be this stupid?", "REPLACE? Your dad was right about you..", "You might wanna stick to your native language"
 ] 
