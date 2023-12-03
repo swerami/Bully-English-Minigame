@@ -4,7 +4,7 @@
 a recreation of the game Bully's English class minigame using Next.js.
 
 ## Demo
-[Click here to visit](https://bully-english-puzzle-5rhy9292n-techrami.vercel.app/)
+[Click here to visit](https://bully-english-minigame.vercel.app/)
 
 ## Installation
 Follow these instructions if you want to install the app and run it locally:
