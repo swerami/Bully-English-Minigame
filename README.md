@@ -1,20 +1,18 @@
 # Project Title
 
 ## Description
-Briefly describe your project, including its purpose and key features. Mention that it's a recreation of the Bully game English class puzzle using Next.js.
+a recreation of the game Bully's English class puzzle using Next.js.
 
 ## Demo
-Provide a link to a live demo or showcase screenshots/gifs of your project in action.
+[Click here to visit][https://bully-english-puzzle-5rhy9292n-techrami.vercel.app/]
 
 ## Table of Contents
 - [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
 - [Contributing](#contributing)
 - [License](#license)
 
 ## Installation
-Provide instructions on how to install and set up your project locally. Include any dependencies that need to be installed and any configuration steps.
+Follow these instructions if you want to install the app and run it locally:
 
 ```bash
 # Clone the repository
