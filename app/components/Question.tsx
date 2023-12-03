@@ -84,6 +84,16 @@ const Question = ({ items }: Props) => {
     }
   }
 
+  const scrambleLetters = () => {
+    setHashmap(new Map());
+    const scrambledLetters = [...letters];
+    for (let i = scrambledLetters.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [scrambledLetters[i], scrambledLetters[j]] = [scrambledLetters[j], scrambledLetters[i]];
+    }
+    setGivenLetters(scrambledLetters);
+  };
+
 
   const isBlurred = !started ? "blur-[6px] pointer-events-none" : "";
 
@@ -103,12 +113,11 @@ const Question = ({ items }: Props) => {
               left: hashmap.get(index) === letter ? chosenLetters.indexOf(letter) * 50 - 25 : index * 50 - 25,
               top: hashmap.get(index) === letter ? index + 100 : 50,
             }}
-            className={`text-4xl w-12 text-center  uppercase hover:text-yellow-500 cursor-pointer transition-all duration-300 ${isBlurred}`}
+            className={`text-4xl w-12 select-none text-center uppercase hover:text-yellow-500 cursor-pointer transition-all duration-300 ${isBlurred}`}
             onClick={() => {
               let newHashMap = new Map(hashmap);
               newHashMap.set(index, letter);
               setHashmap(newHashMap);
-
             }}
           >
             {letter}
@@ -119,14 +128,7 @@ const Question = ({ items }: Props) => {
       <button
         className={`rounded-lg bg-transparent border border-black/5 hover:bg-black/5 focus:scale-95
         transition-all duration-300 px-4 text-lg ${isBlurred}`}
-        onClick={() => {
-          const scrambledLetters = [...letters];
-          for (let i = scrambledLetters.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [scrambledLetters[i], scrambledLetters[j]] = [scrambledLetters[j], scrambledLetters[i]];
-          }
-          setGivenLetters(scrambledLetters);
-        }}
+        onClick={scrambleLetters}
       >
         <MdShuffle />
       </button>
