@@ -1,7 +1,7 @@
 # Bully English Class minigame
 
 ## Description
-a recreation of the game Bully's English class minigame using Next.js.
+a recreation of Bully's English class minigame using Next.js.
 
 ## Demo
 [Click here to visit](https://bully-english-minigame.vercel.app/)
