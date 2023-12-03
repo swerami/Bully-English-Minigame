@@ -31,6 +31,8 @@ You can contribute to this project if you want just:
 - Create a new branch for your feature or bug fix
 - Make your changes and submit a pull request
 
+if you want to add more classes, please contact me on twitter [@swe_rami](https://twitter.com/swe_rami)
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
