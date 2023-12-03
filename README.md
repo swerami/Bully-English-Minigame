@@ -11,10 +11,10 @@ Follow these instructions if you want to install the app and run it locally:
 
 ```bash
 # Clone the repository
-git clone https://github.com/RamiJS/Bully-English-Puzzle.git
+git clone https://github.com/RamiJS/Bully-English-Minigame.git
 
 # Change into the project directory
-cd Bully-English-Puzzle
+cd Bully-English-Minigame
 
 # Install dependencies
 npm install
