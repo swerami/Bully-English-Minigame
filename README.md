@@ -1,7 +1,7 @@
-# Project Title
+# Bully English Class minigame
 
 ## Description
-a recreation of the game Bully's English class puzzle using Next.js.
+a recreation of the game Bully's English class minigame using Next.js.
 
 ## Demo
 [Click here to visit](https://bully-english-puzzle-5rhy9292n-techrami.vercel.app/)
