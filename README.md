@@ -6,11 +6,6 @@ a recreation of the game Bully's English class puzzle using Next.js.
 ## Demo
 [Click here to visit](https://bully-english-puzzle-5rhy9292n-techrami.vercel.app/)
 
-## Table of Contents
-- [Installation](#installation)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## Installation
 Follow these instructions if you want to install the app and run it locally:
 
