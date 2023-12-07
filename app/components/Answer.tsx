@@ -33,11 +33,11 @@ const Answer = ({ items }: Props) => {
   const isBlurred = !started ? "blur-[3px] pointer-events-none" : "";
 
   return (
-    <div className="flex flex-col m-auto">
+    <div className="flex flex-col w-full">
       {Object.keys(groupedWords).map((length, index) => (
-        <div key={index} className={`flex flex-wrap justify gap-x-16 transition-all duration-300 ${isBlurred}`}>
+        <div key={index} className={`flex flex-wrap justify gap-x-16 transition-all duration-300`}>
           {groupedWords[length].map((word, wordIndex) => (
-            <div key={wordIndex} className="my-1">
+            <div key={wordIndex} className="my-1 text-white">
               {word.includes(submittedAnswers.filter((w) => w === word.toLocaleUpperCase())[0]) ? word : word.replace(/./g, "_ ")}
             </div>
           ))}

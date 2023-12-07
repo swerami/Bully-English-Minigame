@@ -5,6 +5,7 @@ import Timer from "./components/Timer";
 
 import { promises as fs} from 'fs';
 import Progress from "./components/Progress";
+import CanvasContainer from "./components/CanvasContainer";
 
 type EnglishClass = {
   Class: string;
@@ -24,14 +25,12 @@ export default async function Home() {
 
   return (
     <main 
-      className="flex flex-col px-4 py-28 gap-6 min-h-screen">
-      <Timer />
-      <Toaster />
-      <Progress data={data} />
-      <div className="grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2">
-        <Answer items={data} />
-        <Question items={data} />
+      className="relative bg-black/95 h-full w-full">
+      <div className="absolute bottom-2 z-50 left-1/2 -translate-x-1/2 bg-white py-3 px-6 rounded-xl">
+        <Timer />
       </div>
+      <CanvasContainer items={data} />
+      <Toaster />
     </main>
   )
 }

@@ -99,10 +99,9 @@ const Question = ({ items }: Props) => {
 
   return (
     <div
-      className="relative top-1/2 left-1/2 
-    -translate-x-1/2 -translate-y-1/2 w-[16rem] 
+      className="relative w-fit left-16 bottom-10 
     h-52 flex flex-col justify-between items-center 
-    gap-14"
+    gap-14 text-white"
     >
       <div className="">
         {givenLetters.map((letter, index) => (
@@ -113,7 +112,7 @@ const Question = ({ items }: Props) => {
               left: hashmap.get(index) === letter ? chosenLetters.indexOf(letter) * 50 - 25 : index * 50 - 25,
               top: hashmap.get(index) === letter ? index + 100 : 50,
             }}
-            className={`text-4xl w-12 select-none text-center uppercase hover:text-yellow-500 cursor-pointer transition-all duration-300 ${isBlurred}`}
+            className={`text-4xl w-12 select-none text-center uppercase hover:text-yellow-500 cursor-pointer transition-all duration-300`}
             onClick={() => {
               let newHashMap = new Map(hashmap);
               newHashMap.set(index, letter);
@@ -124,23 +123,23 @@ const Question = ({ items }: Props) => {
           </span>
         ))}
       </div>
-      <div className="flex flex-row gap-2">
-      <button
-        className={`rounded-lg bg-transparent border border-black/5 hover:bg-black/5 focus:scale-95
-        transition-all duration-300 px-4 text-lg ${isBlurred}`}
-        onClick={scrambleLetters}
-      >
-        <MdShuffle />
-      </button>
+      <div className="absolute bottom-0 translate-x-[7.5rem] flex flex-row gap-2">
         <button
-          className={`rounded-lg bg-black focus:scale-95
-          transition-all duration-300 text-white py-2 px-4 text-3xl ${isBlurred}`}
-          onClick={() => {
-            handleSubmit(chosenLetters);
-          }}
+          className={`rounded-lg bg-transparent border border-black/5 hover:bg-black/5 scale-150 focus:scale-125
+          transition-all duration-300 px-4 text-lg text-white`}
+          onClick={scrambleLetters}
         >
-          Enter
+          <MdShuffle />
         </button>
+          <button
+            className={`rounded-lg focus:scale-95
+            transition-all duration-300 text-white py-2 px-4 text-3xl`}
+            onClick={() => {
+              handleSubmit(chosenLetters);
+            }}
+          >
+            Enter
+          </button>
       </div>
     </div>
   );

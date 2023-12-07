@@ -33,7 +33,7 @@ useEffect(() => {
             setCurrentColor("limegreen");
             break;
         default:
-            setCurrentColor("black");
+            setCurrentColor("white");
     }
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [submittedAnswers, answersCount]);
