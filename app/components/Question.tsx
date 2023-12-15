@@ -95,7 +95,7 @@ const Question = ({ items }: Props) => {
   };
 
 
-  const isBlurred = !started ? "blur-[6px] pointer-events-none" : "";
+  // const isBlurred = !started ? "blur-[6px] pointer-events-none" : "";
 
   return (
     <div

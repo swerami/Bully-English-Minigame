@@ -24,15 +24,14 @@ const SelectQuestion = () => {
         border
         border-black/5
         rounded-lg
+        z-50
         py-2
         px-4
         "
         >
-        <option value={0}>English 1</option>
-        <option value={1}>English 2</option>
-        <option value={2}>English 3</option>
-        <option value={3}>English 4</option>
-        <option value={4}>English 5</option>
+        {Array.from({length: 5}).map((_, i) => (
+            <option value={i}>English {i+1}</option>
+        ))}
     </select>;
 };
 

@@ -59,24 +59,6 @@ export function Chalkboard({ items, ...props }: Props & JSX.IntrinsicElements['g
               </div>
             </div>
           </Html>
-
-          {/* <Html
-            as='div'
-            transform
-            position={[-1.2,-0.0,0.04]}
-          >
-            <Progress data={items} />
-          </Html>
-
-          <Html 
-          as='div'
-          className='max-w-[320px]'
-          transform
-          scale={0.3}
-          position={[-1.2,-0.0,0.04]}
-          >
-            <Answer items={items} />
-          </Html> */}
       </mesh>
     </group>
   )
