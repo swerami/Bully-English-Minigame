@@ -1,4 +1,4 @@
-# Bully English Class minigame
+# Bully - English Class minigame
 
 ## Description
 a recreation of Bully's English class minigame using Next.js.
