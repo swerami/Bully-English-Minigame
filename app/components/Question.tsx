@@ -1,86 +1,92 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
-import { ApiResponse } from '../page';
-import ValidateAnswerStore from '../hooks/ValidateAnswer';
+import React, { useEffect, useState } from "react";
+import { ApiResponse } from "../page";
+import ValidateAnswerStore from "../hooks/ValidateAnswer";
 
 import { MdShuffle } from "react-icons/md";
-import toast from 'react-hot-toast';
-import { randomFailureMessage, randomSuccessMessage, roastTFOUTTAUser } from '../utilities/messageUtils';
+import toast from "react-hot-toast";
+import {
+  randomFailureMessage,
+  randomSuccessMessage,
+  roastUser,
+} from "../utilities/messageUtils";
 
 interface Props {
   items: ApiResponse;
 }
 
 const Question = ({ items }: Props) => {
-  const { setSubmittedAnswers, submittedAnswers, started, currentQuesiton } = ValidateAnswerStore()
+  const { setSubmittedAnswers, submittedAnswers, started, currentQuesiton } =
+    ValidateAnswerStore();
 
   // handle duplicated puzzle letters
-  let letters = items.items[currentQuesiton]['Letters Given'].split(' ').map((letter, index, array) => {
-    if (array.indexOf(letter) !== index) {
-      return letter.toLowerCase();
-    }
-    return letter;
-  });
-  let [givenLetters, setGivenLetters ] = useState(letters)
+  let letters = items.items[currentQuesiton]["Letters Given"]
+    .split(" ")
+    .map((letter, index, array) => {
+      if (array.indexOf(letter) !== index) {
+        return letter.toLowerCase();
+      }
+      return letter;
+    });
+  let [givenLetters, setGivenLetters] = useState(letters);
 
   // update letter
   useEffect(() => {
-    setGivenLetters(letters)
-// eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentQuesiton])
+    setGivenLetters(letters);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentQuesiton]);
 
   const [hashmap, setHashmap] = useState(new Map());
   const chosenLetters = Array.from(hashmap.values());
 
-  let formattedWords = items.items[currentQuesiton].Words.split(' ').map(word => word)
+  let formattedWords = items.items[currentQuesiton].Words.split(" ").map(
+    (word) => word
+  );
 
-  
   const [failureCount, setFailureCount] = useState<number>(0);
   function handleSubmit(chosenLetter: string[]) {
-    let submitted = chosenLetter.join('');
-    if(submitted.length == 0) return;
-
+    let submitted = chosenLetter.join("");
+    if (submitted.length == 0) return;
 
     submitted = submitted.toUpperCase();
 
-    if(submittedAnswers.includes(submitted)) {
+    if (submittedAnswers.includes(submitted)) {
       toast("You have already submitted this answer", {
         icon: "🧐",
-        className: `font-sans`
-      })
+        className: `font-sans`,
+      });
       setHashmap(new Map());
-      return 
+      return;
     }
 
     if (formattedWords.includes(submitted)) {
-      setSubmittedAnswers(submitted)
+      setSubmittedAnswers(submitted);
       setHashmap(new Map());
       toast(randomSuccessMessage(), {
         icon: "🥰",
-        className: `font-sans`
-      })
+        className: `font-sans`,
+      });
 
       // reset the count
-      setFailureCount(0)
+      setFailureCount(0);
     } else {
       // Handle Failure
       setHashmap(new Map());
-      setFailureCount((prev) => prev + 1)
-      
+      setFailureCount((prev: number) => prev + 1);
+
       // Handle if user is braindead
-      if(failureCount < 2){
+      if (failureCount < 2) {
         toast(randomFailureMessage(), {
           icon: "😅",
-          className: `font-sans`
-        })
+          className: `font-sans`,
+        });
       } else {
-        toast(roastTFOUTTAUser(submitted), {
+        toast(roastUser(submitted), {
           icon: "💀",
-          className: `font-sans`
-        })
+          className: `font-sans`,
+        });
       }
-
     }
   }
 
@@ -89,11 +95,13 @@ const Question = ({ items }: Props) => {
     const scrambledLetters = [...letters];
     for (let i = scrambledLetters.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [scrambledLetters[i], scrambledLetters[j]] = [scrambledLetters[j], scrambledLetters[i]];
+      [scrambledLetters[i], scrambledLetters[j]] = [
+        scrambledLetters[j],
+        scrambledLetters[i],
+      ];
     }
     setGivenLetters(scrambledLetters);
   };
-
 
   const isBlurred = !started ? "blur-[6px] pointer-events-none" : "";
 
@@ -110,7 +118,10 @@ const Question = ({ items }: Props) => {
             key={index}
             style={{
               position: "absolute",
-              left: hashmap.get(index) === letter ? chosenLetters.indexOf(letter) * 50 - 25 : index * 50 - 25,
+              left:
+                hashmap.get(index) === letter
+                  ? chosenLetters.indexOf(letter) * 50 - 25
+                  : index * 50 - 25,
               top: hashmap.get(index) === letter ? index + 100 : 50,
             }}
             className={`text-4xl w-12 select-none text-center uppercase hover:text-yellow-500 cursor-pointer transition-all duration-300 ${isBlurred}`}
@@ -125,13 +136,13 @@ const Question = ({ items }: Props) => {
         ))}
       </div>
       <div className="flex flex-row gap-2">
-      <button
-        className={`rounded-lg bg-transparent border border-black/5 hover:bg-black/5 focus:scale-95
+        <button
+          className={`rounded-lg bg-transparent border border-black/5 hover:bg-black/5 focus:scale-95
         transition-all duration-300 px-4 text-lg ${isBlurred}`}
-        onClick={scrambleLetters}
-      >
-        <MdShuffle />
-      </button>
+          onClick={scrambleLetters}
+        >
+          <MdShuffle />
+        </button>
         <button
           className={`rounded-lg bg-black focus:scale-95
           transition-all duration-300 text-white py-2 px-4 text-3xl ${isBlurred}`}

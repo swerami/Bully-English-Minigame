@@ -112,9 +112,16 @@ export const FailureMessages = [
     "Not the right word, but don't give up."
 ];
 
-export const DumbassSpecial = [
-    "bro wtf is a REPLACE", "REPLACE? are you serious? ", "man WHAT THE HELL IS REPLACE",
-    "REPLACE? wow ur naturally dumb!", "REPLACE? you know this is an ENGLISH words test minigame right?",
-    "REPLACE... Bro get tf outta here", "REPLACE??? HAHAHAHA", "REPLACE? You should be ashamed of urself",
-    "REPLACE? How can you be this stupid?", "REPLACE? Your dad was right about you..", "You might wanna stick to your native language"
-] 
+export const PoliteSpecial = [
+    "Hmm, what exactly is REPLACE?", 
+    "REPLACE? Are you sure about that?", 
+    "Hmm, I don’t think REPLACE is quite right.",
+    "REPLACE? That’s an interesting choice!", 
+    "REPLACE? Remember, this is an English words test minigame!",
+    "REPLACE... Maybe try thinking of another word?", 
+    "REPLACE??? Haha, that’s a funny guess!", 
+    "REPLACE? Don’t worry, everyone makes mistakes!",
+    "REPLACE? Maybe double-check your answer?", 
+    "REPLACE? You might want to try again.", 
+    "Perhaps another word might work better than REPLACE!"
+];
