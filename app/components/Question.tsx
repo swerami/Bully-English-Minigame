@@ -83,7 +83,7 @@ const Question = ({ items }: Props) => {
         });
       } else {
         toast(roastUser(submitted), {
-          icon: "💀",
+          icon: "",
           className: `font-sans`,
         });
       }
